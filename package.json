@@ -65,7 +65,10 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.4.3"
+    "@capacitor/cli": "3.4.3",
+    "@svgr/webpack": "^6.2.1",
+    "node-sass": "^7.0.1",
+    "sass": "^1.49.9"
   },
   "description": "An Ionic project"
 }

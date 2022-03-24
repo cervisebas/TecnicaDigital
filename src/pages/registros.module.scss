@@ -1,0 +1,10 @@
+IonCard.custom-card {
+    IonCardHeader {
+        position: relative;
+        IonText {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+}
