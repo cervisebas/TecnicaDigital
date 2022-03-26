@@ -1,0 +1,7 @@
+.custom-scrollbar-render-thumb {
+    background-color: rgba(var(--ion-color-primary-rgb), 0.4);
+    border-radius: 4px;
+}
+.custom-scrollbar-render-thumb:hover {
+    background-color: rgba(var(--ion-color-primary-rgb), 0.8);
+}

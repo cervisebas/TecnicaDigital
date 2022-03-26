@@ -13,7 +13,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { bookmarkOutline, copyOutline, copySharp, listOutline, listSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, timeOutline, timeSharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -27,18 +27,22 @@ const appPages: AppPage[] = [
   {
     title: 'Registros',
     url: '/pages/registros',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: copyOutline,
+    mdIcon: copySharp
   },
   {
     title: 'Horarios',
     url: '/pages/horarios',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    iosIcon: timeOutline,
+    mdIcon: timeSharp
+  },
+  {
+    title: 'Lista de alumnos',
+    url: '/pages/alumnos',
+    iosIcon: listOutline,
+    mdIcon: listSharp
   }
 ];
-
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -61,16 +65,6 @@ const Menu: React.FC = () => {
               </IonMenuToggle>
             );
           })}
-        </IonList>
-
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
         </IonList>
       </IonContent>
     </IonMenu>

@@ -1,0 +1,14 @@
+.custom-card2 {
+    position: relative;
+    ion-card-header {
+        position: relative;
+        width: 100%;
+        ion-button {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 16px;
+            margin: auto;
+        }
+    }
+}

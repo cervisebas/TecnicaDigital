@@ -3,30 +3,18 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 
-/* Core CSS required for Ionic components to work properly */
-import '@ionic/react/css/core.css';
+import './App.scss';
 
-/* Basic CSS for apps built with Ionic */
-import '@ionic/react/css/normalize.css';
-import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
-
-/* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
-
-/* Theme variables */
-import './theme/variables.css';
 import Registros from './pages/registros';
 import P404 from './pages/P404'
+import SplashScreen from './pages/SplashScreen';
+import Horarios from './pages/horarios';
+import ListAlumnos from './pages/alumnos';
 
 setupIonicReact();
 
 const App: React.FC = () => {
+  document.addEventListener('contextmenu', (e)=>e.preventDefault());
   return (
     <IonApp>
       <IonReactRouter>
@@ -39,6 +27,12 @@ const App: React.FC = () => {
             <Route path="/pages/registros" exact={true}>
               <Registros />
             </Route>
+            <Route path="/pages/horarios" exact={true}>
+              <Horarios />
+            </Route>
+            <Route path="/pages/alumnos" exact={true}>
+              <ListAlumnos />
+            </Route>
             <Route path="/404" exact={true}>
               <P404 />
             </Route>
@@ -46,6 +40,7 @@ const App: React.FC = () => {
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
+      <SplashScreen />
     </IonApp>
   );
 };

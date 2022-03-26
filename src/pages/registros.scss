@@ -1,0 +1,25 @@
+.custom-card {
+    ion-card-header {
+        position: relative;
+        ion-text {
+            position: absolute;
+            right: 16px;
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+    }
+    ion-card-content {
+        position: relative;
+        ion-chip.false { --color: var(--ion-color-warning); border-color: var(--ion-color-warning); }
+        ion-chip.true { --color: var(--ion-color-success); border-color: var(--ion-color-success); }
+        ion-chip {
+            position: absolute;
+            right: 16px;
+            top: 0;
+            bottom: 16px;
+            margin: auto;
+        }
+    }
+}
