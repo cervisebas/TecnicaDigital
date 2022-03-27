@@ -1,19 +1,21 @@
 import {
+  IonButton,
+  IonButtons,
   IonContent,
+  IonFooter,
   IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
   IonMenu,
   IonMenuToggle,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
 
-import { useLocation } from 'react-router-dom';
-import { bookmarkOutline, copyOutline, copySharp, listOutline, listSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, timeOutline, timeSharp } from 'ionicons/icons';
+import { Link, useLocation } from 'react-router-dom';
+import { copyOutline, copySharp, listOutline, listSharp, newspaperOutline, personCircleOutline, timeOutline, timeSharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -46,14 +48,14 @@ const appPages: AppPage[] = [
 
 const Menu: React.FC = () => {
   const location = useLocation();
-
   return (
     <IonMenu contentId="main" type="overlay">
       <IonHeader>
         <IonToolbar color="primary">
           <IonTitle>Temario Virtual</IonTitle>
         </IonToolbar>
-      </IonHeader><IonContent>
+      </IonHeader>
+      <IonContent>
         <IonList id="inbox-list">
           {appPages.map((appPage, index) => {
             return (
@@ -67,6 +69,23 @@ const Menu: React.FC = () => {
           })}
         </IonList>
       </IonContent>
+      <IonFooter>
+        <IonToolbar>
+          <IonButtons slot='start'>
+            <IonButton>
+              <IonIcon slot='start' icon={personCircleOutline} size={'large'} />
+              Perfil
+            </IonButton>
+          </IonButtons>
+          <IonButtons slot='end'>
+            <Link to={'/pages/onlyactivity'}>
+              <IonButton>
+                <IonIcon slot='icon-only' icon={newspaperOutline} color={'primary'} />
+              </IonButton>
+            </Link>
+          </IonButtons>
+        </IonToolbar>
+      </IonFooter>
     </IonMenu>
   );
 };

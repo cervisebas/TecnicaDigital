@@ -10,6 +10,7 @@ import P404 from './pages/P404'
 import SplashScreen from './pages/SplashScreen';
 import Horarios from './pages/horarios';
 import ListAlumnos from './pages/alumnos';
+import OnlyActivity from './pages/onlyactivity';
 
 setupIonicReact();
 
@@ -32,6 +33,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/pages/alumnos" exact={true}>
               <ListAlumnos />
+            </Route>
+            <Route path="/pages/onlyactivity" exact={true}>
+              <OnlyActivity />
             </Route>
             <Route path="/404" exact={true}>
               <P404 />

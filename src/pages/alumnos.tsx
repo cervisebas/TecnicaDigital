@@ -1,4 +1,4 @@
-import { IonAccordion, IonAccordionGroup, IonButtons, IonContent, IonHeader, IonImg, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonThumbnail, IonTitle, IonToolbar } from "@ionic/react";
+import { IonAccordion, IonAccordionGroup, IonButtons, IonContent, IonHeader, IonImg, IonItem, IonLabel, IonList, IonMenuButton, IonPage, IonRefresher, IonRefresherContent, IonThumbnail, IonTitle, IonToolbar, RefresherEventDetail } from "@ionic/react";
 import { Component, ReactNode } from "react";
 import CustomScrollBar from "../components/CustomScrollBar";
 import './alumnos.scss';
@@ -24,6 +24,9 @@ export default class ListAlumnos extends Component<IProps, IState> {
                 </IonToolbar>
             </IonHeader>
             <IonContent id="alumnos-content">
+              <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+                <IonRefresherContent></IonRefresherContent>
+              </IonRefresher>
               <CustomScrollBar>
                 <IonAccordionGroup value={['colors', 'numbers']}>
                   <IonAccordion value="colors">
@@ -70,4 +73,12 @@ export default class ListAlumnos extends Component<IProps, IState> {
             </IonContent>
         </IonPage>);
     }
+}
+function doRefresh(event: CustomEvent<RefresherEventDetail>) {
+    console.log('Begin async operation');
+  
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.detail.complete();
+    }, 2000);
 }
