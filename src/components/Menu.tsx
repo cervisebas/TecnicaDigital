@@ -52,7 +52,7 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle>Temario Virtual</IonTitle>
+          <IonTitle>Técnica Digital</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>

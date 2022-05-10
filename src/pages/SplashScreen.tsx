@@ -14,6 +14,8 @@ export default class SplashScreen extends Component<IProps, IState> {
         this.state = {
             modalShow: true
         };
+    }
+    componentDidMount() {
         setTimeout(()=>this.setState({ modalShow: false }), 3500);
     }
     private modalRef: HTMLIonModalElement | null = null;

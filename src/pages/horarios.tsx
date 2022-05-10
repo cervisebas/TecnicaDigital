@@ -51,7 +51,7 @@ export default class Horarios extends Component<IProps, IState> {
                 <IonCard class="custom-card2">
                     <IonCardHeader>
                         <IonCardTitle>Horarios 3°2</IonCardTitle>
-                        <IonButton fill="clear">
+                        <IonButton fill="clear" onClick={()=>this.openModal()}>
                             Ver
                             <IonIcon slot="end" icon={arrowForwardOutline} />
                         </IonButton>
@@ -60,7 +60,7 @@ export default class Horarios extends Component<IProps, IState> {
                 <IonCard class="custom-card2">
                     <IonCardHeader>
                         <IonCardTitle>Horarios 3°3</IonCardTitle>
-                        <IonButton fill="clear">
+                        <IonButton fill="clear" onClick={()=>this.openModal()}>
                             Ver
                             <IonIcon slot="end" icon={arrowForwardOutline} />
                         </IonButton>

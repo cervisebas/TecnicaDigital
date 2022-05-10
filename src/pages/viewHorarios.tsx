@@ -1,7 +1,8 @@
 import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonModal, IonPage, IonRow, IonText, IonTitle, IonToolbar } from "@ionic/react";
 import bowser from "bowser";
-import { arrowBackOutline } from "ionicons/icons";
+import { arrowBackOutline, searchOutline } from "ionicons/icons";
 import { Component, ReactNode } from "react";
+import CustomModal from "../components/CustomModal";
 import CustomScrollBar from "../components/CustomScrollBar";
 import "./viewHorarios.scss";
 
@@ -10,35 +11,46 @@ type IProps = {
     title: string;
     close: ()=>any;
 };
-type IState = {};
+type IState = {
+    toggle: 'zooming normal' | 'zooming zoom';
+};
 
 export default class ViewHorarios extends Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
+        this.state = {
+            toggle: 'zooming normal'
+        };
     }
     private modalRef: HTMLIonModalElement | null = null;
+    private browser = bowser.getParser(window.navigator.userAgent);
     calculeModal() {
-        var browser = bowser.getParser(window.navigator.userAgent);
-        if (browser.getPlatform().type == 'desktop') {
+        if (this.browser.getPlatform().type == 'desktop') {
             var div: any = this.modalRef?.shadowRoot?.querySelector('div.modal-wrapper');
             div.style.height = '100%';
+            div.style.width = '80%';
         }
     }
     render(): ReactNode {
-        return(<IonModal ref={(e)=>this.modalRef = e} isOpen={this.props.show} onIonModalDidPresent={()=>this.calculeModal()}>
-            <IonPage id="view-horarios-content">
-                <IonHeader>
-                    <IonToolbar>
-                        <IonButtons slot="start">
-                            <IonButton onClick={()=>this.props.close()}>
-                                <IonIcon slot="icon-only" icon={arrowBackOutline} />
-                            </IonButton>
-                        </IonButtons>
-                        <IonTitle>Prueba titulo</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
-                <IonContent>
-                    <CustomScrollBar>
+        return(<CustomModal id={'view-horarios-content'} visible={this.props.show} refM={(e)=>this.modalRef = e} onShow={()=>this.calculeModal()} onClose={()=>this.props.close()}>
+            <IonHeader>
+                <IonToolbar>
+                    <IonButtons slot="start">
+                        <IonButton onClick={()=>this.props.close()}>
+                            <IonIcon slot="icon-only" icon={arrowBackOutline} />
+                        </IonButton>
+                    </IonButtons>
+                    <IonTitle>Prueba titulo</IonTitle>
+                    <IonButtons slot={'end'} style={{ display: (this.browser.getPlatform().type == 'mobile')? 'unset': 'none' }}>
+                        <IonButton onClick={()=>this.setState({ toggle: (this.state.toggle == 'zooming zoom')? 'zooming normal': 'zooming zoom' })}>
+                            <IonIcon slot={'icon-only'} icon={searchOutline} />
+                        </IonButton>
+                    </IonButtons>
+                </IonToolbar>
+            </IonHeader>
+            <IonContent>
+                <CustomScrollBar>
+                    <div className={this.state.toggle}>
                         <IonGrid>
                             <IonRow>
                                 <IonCol><IonText>Horario de mañana</IonText></IonCol>
@@ -120,9 +132,9 @@ export default class ViewHorarios extends Component<IProps, IState> {
                                 <IonCol><IonText>Educacion Fisicas</IonText></IonCol>
                             </IonRow>
                         </IonGrid>
-                    </CustomScrollBar>
-                </IonContent>
-            </IonPage>
-        </IonModal>);
+                    </div>
+                </CustomScrollBar>
+            </IonContent>
+        </CustomModal>);
     }
 }
